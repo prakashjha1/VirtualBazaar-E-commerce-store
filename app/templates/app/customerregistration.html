@@ -1,0 +1,117 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Customer Registration{% endblock title %}
+{% block main-content %}
+<head>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+<style>
+
+input[type=text], input[type=password], input[type=email] {
+      width: 100%;
+      padding: 16px 8px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      }
+.icon {
+      font-size: 110px;
+      display: flex;
+      justify-content: center;
+      color: #4286f4;
+      }
+input[type=submit] {
+      background-color: #4286f4;
+      color: white;
+      padding: 14px 0;
+      margin: 10px 0;
+      border: none;
+      cursor: grab;
+      width: 48%;
+      }
+.formcontainer {
+      text-align: center;
+      margin: 24px 50px 12px;
+      }
+.container {
+      padding: 16px 0;
+      text-align:left;
+      }
+input[type=submit]:hover {
+      opacity: 0.8;
+      }
+h1 {
+      text-align:center;
+      fone-size:18;
+      }
+h3 {
+      margin-top:10px;
+      text-align:center;
+      fone-size:10;
+      color:green;
+      }    
+span.psw {
+      float: right;
+      padding-top: 0;
+      padding-right: 15px;
+      }
+@media screen and (max-width: 300px) {
+      span.psw {
+      display: block;
+      float: none;
+      }
+</style>
+</head>
+<div class="container">
+ <div class="row my-3">
+  <div class="col-sm-6 offset-sm-3">
+   <form action="" method="POST" novalidate class="shadow p-5">
+   {% csrf_token %}
+   <h1>SIGN UP</h1>
+   <div class="icon">
+        <i class="fas fa-user-circle"></i>
+      </div>
+      <div class="msg">
+   {% for msg in messages%}
+      <h3>{{msg}}</h3>
+      {% endfor %}
+      </div>
+      <div class="formcontainer">
+      <div class="container">
+        <label for="uname"><strong>First Name</strong></label>
+        <input type="text" placeholder="Enter First Name" name="first_name" required>
+        <label for="uname"><strong>Last Name</strong></label>
+        <input type="text" placeholder="Enter Last Name" name="last_name" required>
+        <label for="mail"><strong>E-mail</strong></label>
+        <input type="email" placeholder="Enter Last Name" name="email" required>
+        <label for="uname"><strong>Username</strong></label>
+        <input type="text" placeholder="Enter Username" name="username" required>
+        <label for="psw"><strong>Password</strong></label>
+        <input type="password" placeholder="Enter Password" name="password1" required>
+        <label for="psw"><strong>Confirm Password</strong></label>
+        <input type="password" placeholder="Enter Password (again)" name="password2" required>
+      </div>
+      <input type="submit" value="Register">
+      <div class="text-center text-primary fw-bold">
+    <small>Existing User ? <a href="{% url 'login' %}" class="text-danger">Login Now</a></small>
+    </div>
+    <!-- {% for fm in form %}
+    <div class="form-group mb-3">
+    {{fm.label_tag}} {{fm}}<small class="text-danger">{{fm.errors|striptags}}</small>
+    </div>
+    {% endfor %}
+    <input type="submit" value="Submit" class="btn btn-primary"><br>
+    <div class="text-center text-primary fw-bold">
+    <small>Existing User ? <a href="{% url 'login' %}" class="text-danger">Login Now</a></small>
+    </div>
+    {% if form.non_field_errors %}
+      {% for error in form.non_field_errors %}
+         <p class="alert alert-danger my-3">{{error}}</p>
+      {% endfor %}
+   {% endif %} -->
+   </form>
+  </div>
+ </div>
+</div>
+{% endblock main-content %}
